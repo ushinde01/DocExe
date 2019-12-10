@@ -1,0 +1,15 @@
+Index: CFileSignatureLibrary.class.php
+===================================================================
+--- CFileSignatureLibrary.class.php	(revision 523688)
++++ CFileSignatureLibrary.class.php	(working copy)
+@@ -974,6 +974,10 @@
+ 			$arrobjFileSignatures = [];
+ 			$this->m_objFile      = $this->m_arrobjFiles[$this->m_objFileAssociation->getFileId()];
+ 
++			if( false == valObj( $this->m_objFile, 'CFile' ) ) {
++				return false;
++			}
++
+ 			foreach( $arrobjLeaseAddendumFileSignatures as $objLeaseAddendumFileSignature ) {
+ 				if( $this->m_objFile->getId() == $objLeaseAddendumFileSignature->getFileId() ) {
+ 					$arrobjFileSignatures[] = $objLeaseAddendumFileSignature;
